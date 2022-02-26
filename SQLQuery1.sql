@@ -1,0 +1,32 @@
+--CREATE DATABASE Personel_Information_System
+USE Personnel_Information_System
+
+CREATE TABLE tblPerson
+(
+ID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+PName VARCHAR(43) NOT NULL,
+Surname VARCHAR(37) NOT NULL,
+TcNumber CHAR(11),
+BirthDay DATETIME,
+)
+CREATE TABLE tblDepartment
+(
+ID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+Departmant VARCHAR(30) NOT NULL
+)
+
+CREATE TABLE tblDegree
+(
+ID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+Degree  VARCHAR(30) NOT NULL,
+)
+
+CREATE TABLE tblEmployee
+(
+EmployeeNumber CHAR(5) PRIMARY KEY NOT NULL,
+EmployeNameID INT REFERENCES tblPerson(ID),
+DateOfStart DATETIME,
+DepartmantID INT  REFERENCES tblDepartment(ID) NOT NULL,
+DegreeID INT REFERENCES tblDegree(ID),
+WorkingStatus BIT,
+)
