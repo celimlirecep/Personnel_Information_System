@@ -33,6 +33,7 @@ namespace Personnel_Information_System
         public int DegreeID { get; set; }
         public bool WorkingStatus { get; set; }
         public int EmployeeNameID { get; set; }
+        
     }
     public class Departman
     {

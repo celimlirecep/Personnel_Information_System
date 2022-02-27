@@ -13,6 +13,7 @@ namespace Personnel_Information_System
 
 
         SqlConnection connection;
+        SqlCommand command;
         string querySentence;
         public string TableName { get; set; }
         public DataTable Dt { get; set; }
@@ -21,7 +22,7 @@ namespace Personnel_Information_System
 
         public Database()
         {
-            connect();
+            connection= connect();
             connectionOpen();
         }
 
@@ -65,18 +66,41 @@ namespace Personnel_Information_System
             adapter.Fill(Dt);
             
         }
+        /// <summary>
+        /// This method adds parameters to the table
+        /// </summary>
+        /// <param name="employee"></param>
       
-        public void operation(params object[] arg)
+        public void operation(Employee employee)
         {
-            string columsentence = "";
-            foreach (object item in arg)
-            {
-                columsentence = string.Join(",",item.ToString());
-            }
-            
-            querySentence=$"INSERT INTO "
-
+            connectionOpen();
+            querySentence = $"INSERT INTO  {TableName} " +
+                $"(EmployeeNumber,EmployeeID,DateOfStart,DepartmentID,WorkingStatus) VALUES" +
+                $"(@P1,@P2,@P3,@P4,@P5) ";
+            command = new SqlCommand(querySentence, connection);
+            command.Parameters.AddWithValue("@P1", employee.EmployeeNumber);
+            command.Parameters.AddWithValue("@P2", employee.EmployeeNameID);
+            command.Parameters.AddWithValue("@P3", employee.DateOfStart.ToString("yyyy-MM-dd"));
+            command.Parameters.AddWithValue("@P4", employee.DepartmantID);
+            command.Parameters.AddWithValue("@P5", employee.WorkingStatus);
+            command.ExecuteNonQuery();
+            connectionclose();
         }
+        /// <summary>
+        /// This method doesn't delete. this method sets the last column's cell to false 
+        /// </summary>
+        /// <param name="id"></param>
+        
+        public void operation(string id)
+        {
+            connectionOpen();
+            querySentence = $"UPDATE {TableName} SET WorkingStatus=0 WHERE EmployeeNumber='{id}'";
+            command = new SqlCommand(querySentence, connection);
+            command.ExecuteNonQuery();
+            connectionclose();
+        }
+
+       
 
 
 
