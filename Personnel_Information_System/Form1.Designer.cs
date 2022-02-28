@@ -45,6 +45,7 @@ namespace Personnel_Information_System
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.FormInformationSystem = new System.Windows.Forms.TabControl();
             this.tabEmployee = new System.Windows.Forms.TabPage();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.dtpDateOfStart = new System.Windows.Forms.DateTimePicker();
             this.dgvEmployeeDegree = new System.Windows.Forms.DataGridView();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -90,7 +91,6 @@ namespace Personnel_Information_System
             this.btnDegreeClean = new System.Windows.Forms.Button();
             this.btnDegreeAdd = new System.Windows.Forms.Button();
             this.dgvDegree = new System.Windows.Forms.DataGridView();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.FormInformationSystem.SuspendLayout();
             this.tabEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeDegree)).BeginInit();
@@ -146,6 +146,16 @@ namespace Personnel_Information_System
             this.tabEmployee.Size = new System.Drawing.Size(756, 387);
             this.tabEmployee.TabIndex = 0;
             this.tabEmployee.Text = "Employees";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(559, 19);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(56, 17);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.Text = "Active";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // dtpDateOfStart
             // 
@@ -786,16 +796,6 @@ namespace Personnel_Information_System
             this.dgvDegree.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDegree.Size = new System.Drawing.Size(750, 337);
             this.dgvDegree.TabIndex = 0;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(559, 19);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 9;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
