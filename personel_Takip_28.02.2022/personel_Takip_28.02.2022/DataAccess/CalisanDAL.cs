@@ -22,13 +22,13 @@ namespace personel_Takip_28._02._2022.DataAccess
         /// kayıtları döndürücek. Buraya uygun bir WHERE ifadesi yazılırsa koşula uygun kayıtları döndürecek
         /// </param>
         /// <returns></returns>
-        public List<calisan> GetAll(string kosulCumlesi="")
+        public List<calisan> GetAll(string kosulCumlesi="")//"" anlamı boş bırakılabilir isteğe bağlı
         {
             List<calisan> calisanlar = new List<calisan>();
             try
             {
                 //Buraya yazacağımız işlemleri dene sorun yoksa çalıştır
-
+                                                  //koşul cümles ile WHERE .... ile sorgu yazıp istediğimiz degerleri döndürebilmek
                 using (SqlCommand command = new SqlCommand($"SELECT * FROM tblCalisanlar {kosulCumlesi}", SQLbaglanti.Baglanti))
                 {
                     //using satırında yaratılşan nesne sadece bu scopta yaşayacak bu scop dışında yok olacak
@@ -63,7 +63,7 @@ namespace personel_Takip_28._02._2022.DataAccess
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
                 return null;
-                //throw; // HATA VARSA PROGRAMDA DURUCAK
+              //  throw; // HATA VARSA PROGRAMDA DURUCAK
             }
             finally
             {
@@ -75,7 +75,7 @@ namespace personel_Takip_28._02._2022.DataAccess
             string sorguCumlesi = $"INSERT INTO tblCalisanlar " +
                 $"(Ad,Soyad,TcNo,PersonelNo,DogumTarihi,IseBaslamaTarihi,Departman,Unvan,Durumu)" +
                 $"VALUES" +
-                $"(@p1,@p2,p3,@p4,@p5,@p6,@p7,@p8,@p9)";
+                $"(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9)";
             try// hatalara karşı önlem olsun diye server vs çalışmaz
             {
                 using (SqlCommand command=new SqlCommand(sorguCumlesi,SQLbaglanti.Baglanti))
@@ -167,14 +167,14 @@ namespace personel_Takip_28._02._2022.DataAccess
                 SQLbaglanti.baglantiKapat();
             }
         }
-        public bool Delete(string kosulCumlesi)
+        public bool Delete(string kosulCumlesi="")
         {
-            string sorguCumlesi = $"DELETE FROM tblCalissanlar @p1";
+            string sorguCumlesi = $"DELETE FROM tblCalisanlar {kosulCumlesi}";
             try
             {
                 using (SqlCommand command=new SqlCommand(sorguCumlesi,SQLbaglanti.Baglanti))
                 {
-                    command.Parameters.AddWithValue("@p1", kosulCumlesi);
+                   // command.Parameters.AddWithValue("@p1", kosulCumlesi);
                     SQLbaglanti.baglantiAc();
                     command.ExecuteNonQuery();
                 }

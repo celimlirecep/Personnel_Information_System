@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace personel_Takip_28._02._2022.Entities
 {
-    class calisan
+   public class calisan
     {// Bu class bizim entities katmanındadır
         //Entititlerimizden tblCalisanlara ait bir entitie için hazırlandı
         public int ID { get; set; }
