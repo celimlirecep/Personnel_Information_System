@@ -18,6 +18,7 @@ namespace personel_Takip_28._02._2022
         CalisanDAL calisanDAL = new CalisanDAL();
         int secilenID=0;
         calisan calisan = null;
+        String orjinalPersonelNO;
 
         public FormAna()
         {
@@ -88,12 +89,15 @@ namespace personel_Takip_28._02._2022
             calisan= new calisan();
             try
             {
+                
                 secilenID = Convert.ToInt32(dgvCalisanlar.SelectedRows[0].Cells[0].Value.ToString());
-                txtaAd.Text = dgvCalisanlar.SelectedRows[0].Cells[1].Value.ToString();
+                txtaAd.Text = dgvCalisanlar.SelectedRows[0].Cells[1].Value.ToString().ToUpper();
                 txtSoyad.Text = dgvCalisanlar.SelectedRows[0].Cells[2].Value.ToString();
+               
                 txtTcNo.Text = dgvCalisanlar.SelectedRows[0].Cells[3].Value.ToString();
-                txtPersonelNo.Text = dgvCalisanlar.SelectedRows[0].Cells[4].Value.ToString();
                 dtpİseBaslamaTarihi.Format = DateTimePickerFormat.Long;
+                orjinalPersonelNO = txtPersonelNo.Text = dgvCalisanlar.SelectedRows[0].Cells[4].Value.ToString();
+              
 
                 dtpDogumTarihi.Value = Convert.ToDateTime(dgvCalisanlar.SelectedRows[0].Cells[5].Value.ToString());
                 dtpİseBaslamaTarihi.Format = DateTimePickerFormat.Long;
@@ -230,9 +234,13 @@ namespace personel_Takip_28._02._2022
                 {
                     value = control.Text;
                     
-                    if (cbxBenzer.Checked)
+                    if (rdbBenzer.Checked)
                     {
                         alanlar.Add($" {fieldName} LIKE '%{value}%'");
+                    }
+                    else if (rdbIleBaslayan.Checked)
+                    {
+                        alanlar.Add($" {fieldName} LIKE '{value}%'");
                     }
                     else
                     {
@@ -244,7 +252,7 @@ namespace personel_Takip_28._02._2022
                
             }
 
-            if (alanlar.Count<0)
+            if (alanlar.Count<=0)
             {
                // MessageBox.Show("aramak istediğiniz degerleri yazınız");
             }
@@ -265,7 +273,79 @@ namespace personel_Takip_28._02._2022
 
         private void btnGetir_Click(object sender, EventArgs e)
         {
+            calisan calisan = new calisan();
+            calisan = calisanDAL.Get(CreateQueryString());
+            if (calisan!=null)
+            {
+                txtaAd.Text = calisan.Ad;
+                txtSoyad.Text = calisan.Soyad;
+                txtTcNo.Text = calisan.TcNo;
+                txtPersonelNo.Text = calisan.PersonelNo;
+                dtpDogumTarihi.Format = DateTimePickerFormat.Long;
+                dtpDogumTarihi.Value = calisan.DogumTarihi;
+                dtpİseBaslamaTarihi.Format = DateTimePickerFormat.Long;
+                dtpİseBaslamaTarihi.Value = calisan.IseBaslamaTarihi;
+                cmbDepartman.Text = calisan.Departman;
+                cmbUnvan.Text = calisan.Unvan;
+                cmbDurumu.Text = calisan.Durumu;
+
+            }
+
+        }
+
+        private void btnGuncelle_Click(object sender, EventArgs e)
+        {
+            if (secilenID==0)
+            {
+                MessageBox.Show("Lütfen güncellemek istediğiniz kaydı seçiniz!!!");
+            }
+            else if(!BlankControl())
+            {
+                MessageBox.Show("Tüm alanları Doldurunuz!!!");
+            }
+            else
+            {
+                calisan calisan;
+                calisan = new calisan
+                {
+                    ID = secilenID,
+                    Ad = txtaAd.Text,
+                    Soyad = txtSoyad.Text,
+                    TcNo = txtTcNo.Text,
+                    PersonelNo = txtPersonelNo.Text,
+                    DogumTarihi = dtpDogumTarihi.Value,
+                    IseBaslamaTarihi = dtpİseBaslamaTarihi.Value,
+                    Departman = cmbDepartman.SelectedItem.ToString(),
+                    Unvan = cmbUnvan.SelectedItem.ToString(),
+                    Durumu = cmbDurumu.SelectedItem.ToString()
+                };
+
+                bool girdi = true;
+                  if (calisanDAL.Dublicate($"WHERE PersonelNo='{calisan.PersonelNo}'") == 1 )//daha önce kayıt oluşturulmuş
+                  {
+                        if (orjinalPersonelNO!=calisan.PersonelNo)
+                        {
+                            System.Windows.Forms.MessageBox.Show("Bu telefon numarası daha önce oluşturulmuş");
+                            calisan.PersonelNo = orjinalPersonelNO;
+                            girdi = false;
+                        }
+                  }
+
+                if (calisanDAL.Update(calisan) && girdi  )
+                {
+                    MessageBox.Show("Güncelleme başarılı");
+                }
+                else
+                {
+                    MessageBox.Show("Güncelleme Başarısız");
+                }
+            }
             Refresh();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(calisanDAL.Dublicate(@"WHERE PersonelNo= '"+txtPersonelNo.Text+"'").ToString());
         }
     }
 }

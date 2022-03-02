@@ -1,7 +1,7 @@
 ﻿
-namespace personel_Takip_28._02._2022
+namespace Personel_Information_v2
 {
-    partial class FormAna
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,18 @@ namespace personel_Takip_28._02._2022
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.cbxBenzer = new System.Windows.Forms.CheckBox();
+            this.btnBul = new System.Windows.Forms.Button();
+            this.btnGetir = new System.Windows.Forms.Button();
+            this.btnSil = new System.Windows.Forms.Button();
+            this.btnHepsiniSil = new System.Windows.Forms.Button();
+            this.btnTemizle = new System.Windows.Forms.Button();
+            this.btnGuncelle = new System.Windows.Forms.Button();
+            this.btnKaydet = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dgvCalisanlar = new System.Windows.Forms.DataGridView();
             this.pnlAraclar = new System.Windows.Forms.Panel();
             this.cmbDurumu = new System.Windows.Forms.ComboBox();
             this.cmbUnvan = new System.Windows.Forms.ComboBox();
@@ -48,20 +60,149 @@ namespace personel_Takip_28._02._2022
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.dgvCalisanlar = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnKaydet = new System.Windows.Forms.Button();
-            this.btnGuncelle = new System.Windows.Forms.Button();
-            this.btnTemizle = new System.Windows.Forms.Button();
-            this.btnSil = new System.Windows.Forms.Button();
-            this.btnHepsiniSil = new System.Windows.Forms.Button();
-            this.btnGetir = new System.Windows.Forms.Button();
-            this.btnBul = new System.Windows.Forms.Button();
-            this.rdbIleBaslayan = new System.Windows.Forms.RadioButton();
-            this.rdbBenzer = new System.Windows.Forms.RadioButton();
-            this.pnlAraclar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalisanlar)).BeginInit();
+            this.pnlAraclar.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // cbxBenzer
+            // 
+            this.cbxBenzer.Checked = true;
+            this.cbxBenzer.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbxBenzer.Location = new System.Drawing.Point(216, 389);
+            this.cbxBenzer.Name = "cbxBenzer";
+            this.cbxBenzer.Size = new System.Drawing.Size(104, 24);
+            this.cbxBenzer.TabIndex = 15;
+            this.cbxBenzer.Text = "Benzerlerini Bul";
+            this.cbxBenzer.UseVisualStyleBackColor = true;
+            // 
+            // btnBul
+            // 
+            this.btnBul.BackColor = System.Drawing.Color.DimGray;
+            this.btnBul.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnBul.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnBul.Location = new System.Drawing.Point(12, 360);
+            this.btnBul.Name = "btnBul";
+            this.btnBul.Size = new System.Drawing.Size(149, 23);
+            this.btnBul.TabIndex = 8;
+            this.btnBul.Text = "BUL";
+            this.btnBul.UseVisualStyleBackColor = false;
+            // 
+            // btnGetir
+            // 
+            this.btnGetir.BackColor = System.Drawing.Color.DimGray;
+            this.btnGetir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnGetir.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnGetir.Location = new System.Drawing.Point(12, 389);
+            this.btnGetir.Name = "btnGetir";
+            this.btnGetir.Size = new System.Drawing.Size(149, 23);
+            this.btnGetir.TabIndex = 9;
+            this.btnGetir.Text = "GETİR";
+            this.btnGetir.UseVisualStyleBackColor = false;
+            // 
+            // btnSil
+            // 
+            this.btnSil.BackColor = System.Drawing.Color.DimGray;
+            this.btnSil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSil.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSil.Location = new System.Drawing.Point(12, 331);
+            this.btnSil.Name = "btnSil";
+            this.btnSil.Size = new System.Drawing.Size(149, 23);
+            this.btnSil.TabIndex = 10;
+            this.btnSil.Text = "SİL";
+            this.btnSil.UseVisualStyleBackColor = false;
+            // 
+            // btnHepsiniSil
+            // 
+            this.btnHepsiniSil.BackColor = System.Drawing.Color.DimGray;
+            this.btnHepsiniSil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnHepsiniSil.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnHepsiniSil.Location = new System.Drawing.Point(203, 360);
+            this.btnHepsiniSil.Name = "btnHepsiniSil";
+            this.btnHepsiniSil.Size = new System.Drawing.Size(134, 23);
+            this.btnHepsiniSil.TabIndex = 11;
+            this.btnHepsiniSil.Text = "HEPSİNİ SİL";
+            this.btnHepsiniSil.UseVisualStyleBackColor = false;
+            // 
+            // btnTemizle
+            // 
+            this.btnTemizle.BackColor = System.Drawing.Color.DimGray;
+            this.btnTemizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnTemizle.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnTemizle.Location = new System.Drawing.Point(203, 331);
+            this.btnTemizle.Name = "btnTemizle";
+            this.btnTemizle.Size = new System.Drawing.Size(134, 23);
+            this.btnTemizle.TabIndex = 12;
+            this.btnTemizle.Text = "TEMİZLE";
+            this.btnTemizle.UseVisualStyleBackColor = false;
+            // 
+            // btnGuncelle
+            // 
+            this.btnGuncelle.BackColor = System.Drawing.Color.DimGray;
+            this.btnGuncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnGuncelle.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnGuncelle.Location = new System.Drawing.Point(203, 302);
+            this.btnGuncelle.Name = "btnGuncelle";
+            this.btnGuncelle.Size = new System.Drawing.Size(134, 23);
+            this.btnGuncelle.TabIndex = 13;
+            this.btnGuncelle.Text = "GÜNCELLE";
+            this.btnGuncelle.UseVisualStyleBackColor = false;
+            // 
+            // btnKaydet
+            // 
+            this.btnKaydet.BackColor = System.Drawing.Color.DimGray;
+            this.btnKaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKaydet.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnKaydet.Location = new System.Drawing.Point(12, 302);
+            this.btnKaydet.Name = "btnKaydet";
+            this.btnKaydet.Size = new System.Drawing.Size(149, 23);
+            this.btnKaydet.TabIndex = 14;
+            this.btnKaydet.Text = "KAYDET";
+            this.btnKaydet.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1070, 31);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Wissen Akademie - PERSONEL TAKİP UYGULAMASI\r\n";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dgvCalisanlar
+            // 
+            this.dgvCalisanlar.AllowUserToAddRows = false;
+            this.dgvCalisanlar.AllowUserToDeleteRows = false;
+            this.dgvCalisanlar.AllowUserToResizeColumns = false;
+            this.dgvCalisanlar.AllowUserToResizeRows = false;
+            this.dgvCalisanlar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvCalisanlar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCalisanlar.BackgroundColor = System.Drawing.Color.Moccasin;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Wheat;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSalmon;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCalisanlar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvCalisanlar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCalisanlar.Location = new System.Drawing.Point(404, 53);
+            this.dgvCalisanlar.Name = "dgvCalisanlar";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Wheat;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSalmon;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCalisanlar.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvCalisanlar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCalisanlar.Size = new System.Drawing.Size(802, 364);
+            this.dgvCalisanlar.TabIndex = 6;
             // 
             // pnlAraclar
             // 
@@ -86,7 +227,7 @@ namespace personel_Takip_28._02._2022
             this.pnlAraclar.Location = new System.Drawing.Point(12, 53);
             this.pnlAraclar.Name = "pnlAraclar";
             this.pnlAraclar.Size = new System.Drawing.Size(348, 231);
-            this.pnlAraclar.TabIndex = 0;
+            this.pnlAraclar.TabIndex = 5;
             // 
             // cmbDurumu
             // 
@@ -136,7 +277,6 @@ namespace personel_Takip_28._02._2022
             this.dtpİseBaslamaTarihi.Size = new System.Drawing.Size(172, 20);
             this.dtpİseBaslamaTarihi.TabIndex = 4;
             this.dtpİseBaslamaTarihi.Tag = "IseBaslamaTarihi";
-            this.dtpİseBaslamaTarihi.ValueChanged += new System.EventHandler(this.dtpİseBaslamaTarihi_ValueChanged);
             // 
             // dtpDogumTarihi
             // 
@@ -145,7 +285,6 @@ namespace personel_Takip_28._02._2022
             this.dtpDogumTarihi.Size = new System.Drawing.Size(172, 20);
             this.dtpDogumTarihi.TabIndex = 4;
             this.dtpDogumTarihi.Tag = "DogumTarihi";
-            this.dtpDogumTarihi.ValueChanged += new System.EventHandler(this.dtpDogumTarihi_ValueChanged);
             // 
             // txtPersonelNo
             // 
@@ -280,160 +419,12 @@ namespace personel_Takip_28._02._2022
             this.label6.TabIndex = 2;
             this.label6.Text = "DOGUM TARİHİ ";
             // 
-            // dgvCalisanlar
-            // 
-            this.dgvCalisanlar.AllowUserToAddRows = false;
-            this.dgvCalisanlar.AllowUserToDeleteRows = false;
-            this.dgvCalisanlar.AllowUserToResizeColumns = false;
-            this.dgvCalisanlar.AllowUserToResizeRows = false;
-            this.dgvCalisanlar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvCalisanlar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCalisanlar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCalisanlar.Location = new System.Drawing.Point(366, 53);
-            this.dgvCalisanlar.Name = "dgvCalisanlar";
-            this.dgvCalisanlar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCalisanlar.Size = new System.Drawing.Size(716, 364);
-            this.dgvCalisanlar.TabIndex = 1;
-            this.dgvCalisanlar.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCalisanlar_CellEnter);
-            this.dgvCalisanlar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvCalisanlar_KeyPress);
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1070, 31);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Wissen Akademie - PERSONEL TAKİP UYGULAMASI\r\n";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // btnKaydet
-            // 
-            this.btnKaydet.BackColor = System.Drawing.Color.DimGray;
-            this.btnKaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnKaydet.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnKaydet.Location = new System.Drawing.Point(202, 396);
-            this.btnKaydet.Name = "btnKaydet";
-            this.btnKaydet.Size = new System.Drawing.Size(134, 23);
-            this.btnKaydet.TabIndex = 3;
-            this.btnKaydet.Text = "KAYDET";
-            this.btnKaydet.UseVisualStyleBackColor = false;
-            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
-            // 
-            // btnGuncelle
-            // 
-            this.btnGuncelle.BackColor = System.Drawing.Color.DimGray;
-            this.btnGuncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnGuncelle.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnGuncelle.Location = new System.Drawing.Point(202, 309);
-            this.btnGuncelle.Name = "btnGuncelle";
-            this.btnGuncelle.Size = new System.Drawing.Size(134, 23);
-            this.btnGuncelle.TabIndex = 3;
-            this.btnGuncelle.Text = "GÜNCELLE";
-            this.btnGuncelle.UseVisualStyleBackColor = false;
-            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
-            // 
-            // btnTemizle
-            // 
-            this.btnTemizle.BackColor = System.Drawing.Color.DimGray;
-            this.btnTemizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTemizle.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnTemizle.Location = new System.Drawing.Point(202, 338);
-            this.btnTemizle.Name = "btnTemizle";
-            this.btnTemizle.Size = new System.Drawing.Size(134, 23);
-            this.btnTemizle.TabIndex = 3;
-            this.btnTemizle.Text = "TEMİZLE";
-            this.btnTemizle.UseVisualStyleBackColor = false;
-            this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
-            // 
-            // btnSil
-            // 
-            this.btnSil.BackColor = System.Drawing.Color.DimGray;
-            this.btnSil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSil.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSil.Location = new System.Drawing.Point(12, 332);
-            this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(149, 23);
-            this.btnSil.TabIndex = 3;
-            this.btnSil.Text = "SİL";
-            this.btnSil.UseVisualStyleBackColor = false;
-            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
-            // 
-            // btnHepsiniSil
-            // 
-            this.btnHepsiniSil.BackColor = System.Drawing.Color.DimGray;
-            this.btnHepsiniSil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnHepsiniSil.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnHepsiniSil.Location = new System.Drawing.Point(202, 367);
-            this.btnHepsiniSil.Name = "btnHepsiniSil";
-            this.btnHepsiniSil.Size = new System.Drawing.Size(134, 23);
-            this.btnHepsiniSil.TabIndex = 3;
-            this.btnHepsiniSil.Text = "HEPSİNİ SİL";
-            this.btnHepsiniSil.UseVisualStyleBackColor = false;
-            this.btnHepsiniSil.Click += new System.EventHandler(this.btnHepsiniSil_Click);
-            // 
-            // btnGetir
-            // 
-            this.btnGetir.BackColor = System.Drawing.Color.DimGray;
-            this.btnGetir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnGetir.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnGetir.Location = new System.Drawing.Point(12, 390);
-            this.btnGetir.Name = "btnGetir";
-            this.btnGetir.Size = new System.Drawing.Size(149, 23);
-            this.btnGetir.TabIndex = 3;
-            this.btnGetir.Text = "GETİR";
-            this.btnGetir.UseVisualStyleBackColor = false;
-            this.btnGetir.Click += new System.EventHandler(this.btnGetir_Click);
-            // 
-            // btnBul
-            // 
-            this.btnBul.BackColor = System.Drawing.Color.DimGray;
-            this.btnBul.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnBul.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnBul.Location = new System.Drawing.Point(12, 361);
-            this.btnBul.Name = "btnBul";
-            this.btnBul.Size = new System.Drawing.Size(149, 23);
-            this.btnBul.TabIndex = 3;
-            this.btnBul.Text = "BUL";
-            this.btnBul.UseVisualStyleBackColor = false;
-            this.btnBul.Click += new System.EventHandler(this.btnBul_Click);
-            // 
-            // rdbIleBaslayan
-            // 
-            this.rdbIleBaslayan.AutoSize = true;
-            this.rdbIleBaslayan.Checked = true;
-            this.rdbIleBaslayan.Location = new System.Drawing.Point(12, 309);
-            this.rdbIleBaslayan.Name = "rdbIleBaslayan";
-            this.rdbIleBaslayan.Size = new System.Drawing.Size(82, 17);
-            this.rdbIleBaslayan.TabIndex = 5;
-            this.rdbIleBaslayan.TabStop = true;
-            this.rdbIleBaslayan.Text = "İle Başlayan";
-            this.rdbIleBaslayan.UseVisualStyleBackColor = true;
-            // 
-            // rdbBenzer
-            // 
-            this.rdbBenzer.AutoSize = true;
-            this.rdbBenzer.Location = new System.Drawing.Point(100, 309);
-            this.rdbBenzer.Name = "rdbBenzer";
-            this.rdbBenzer.Size = new System.Drawing.Size(58, 17);
-            this.rdbBenzer.TabIndex = 6;
-            this.rdbBenzer.TabStop = true;
-            this.rdbBenzer.Text = "Benzer";
-            this.rdbBenzer.UseVisualStyleBackColor = true;
-            // 
-            // FormAna
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(1094, 427);
-            this.Controls.Add(this.rdbBenzer);
-            this.Controls.Add(this.rdbIleBaslayan);
+            this.ClientSize = new System.Drawing.Size(1218, 447);
+            this.Controls.Add(this.cbxBenzer);
             this.Controls.Add(this.btnBul);
             this.Controls.Add(this.btnGetir);
             this.Controls.Add(this.btnSil);
@@ -444,19 +435,29 @@ namespace personel_Takip_28._02._2022
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvCalisanlar);
             this.Controls.Add(this.pnlAraclar);
-            this.Name = "FormAna";
-            this.Text = "PERSONEL TAKİP UYGULAMASI";
+            this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCalisanlar)).EndInit();
             this.pnlAraclar.ResumeLayout(false);
             this.pnlAraclar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCalisanlar)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.CheckBox cbxBenzer;
+        private System.Windows.Forms.Button btnBul;
+        private System.Windows.Forms.Button btnGetir;
+        private System.Windows.Forms.Button btnSil;
+        private System.Windows.Forms.Button btnHepsiniSil;
+        private System.Windows.Forms.Button btnTemizle;
+        private System.Windows.Forms.Button btnGuncelle;
+        private System.Windows.Forms.Button btnKaydet;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dgvCalisanlar;
         private System.Windows.Forms.Panel pnlAraclar;
         private System.Windows.Forms.ComboBox cmbDurumu;
         private System.Windows.Forms.ComboBox cmbUnvan;
@@ -476,17 +477,6 @@ namespace personel_Takip_28._02._2022
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dgvCalisanlar;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnKaydet;
-        private System.Windows.Forms.Button btnGuncelle;
-        private System.Windows.Forms.Button btnTemizle;
-        private System.Windows.Forms.Button btnSil;
-        private System.Windows.Forms.Button btnHepsiniSil;
-        private System.Windows.Forms.Button btnGetir;
-        private System.Windows.Forms.Button btnBul;
-        private System.Windows.Forms.RadioButton rdbIleBaslayan;
-        private System.Windows.Forms.RadioButton rdbBenzer;
     }
 }
 

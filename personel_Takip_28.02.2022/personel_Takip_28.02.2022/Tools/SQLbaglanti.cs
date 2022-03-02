@@ -15,7 +15,7 @@ namespace personel_Takip_28._02._2022.Tools
         public static SqlConnection Baglanti
         {
             get //singıltın=> tek bir kere çalıştı- tekbir kere çalışcak döngüye soktuk
-            {
+             {
                 if (baglanti==null)
                 {
                     baglanti = new SqlConnection(ConfigurationManager.ConnectionStrings["CsPersonel"].ConnectionString);

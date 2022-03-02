@@ -39,22 +39,23 @@ namespace personel_Takip_28._02._2022.DataAccess
                     {
                         while (reader.Read())//geri dönen degerlerin hepsine bakmamızı saglar, okuma false verene kadar
                         {
-                        calisan calisan = new calisan
-                        {
-                                ID = Convert.ToInt32(reader["ID"]),
-                                Ad = reader["Ad"].ToString(),
-                                Soyad = reader["Soyad"].ToString(),
-                                TcNo = reader["TcNo"].ToString(),
-                                PersonelNo = reader["PersonelNo"].ToString(),
-                                DogumTarihi=Convert.ToDateTime(reader["DogumTarihi"]),
-                                IseBaslamaTarihi= Convert.ToDateTime(reader["IseBaslamaTarihi"]),
-                                Departman= reader["Departman"].ToString(),
-                                Unvan= reader["Unvan"].ToString(),
-                                Durumu= reader["Durumu"].ToString()
+                            calisan calisan = new calisan
+                            {
+                                    ID = Convert.ToInt32(reader["ID"]),
+                                    Ad = reader["Ad"].ToString(),
+                                    Soyad = reader["Soyad"].ToString(),
+                                    TcNo = reader["TcNo"].ToString(),
+                                    PersonelNo = reader["PersonelNo"].ToString(),
+                                    DogumTarihi=Convert.ToDateTime(reader["DogumTarihi"]),
+                                    IseBaslamaTarihi= Convert.ToDateTime(reader["IseBaslamaTarihi"]),
+                                    Departman= reader["Departman"].ToString(),
+                                    Unvan= reader["Unvan"].ToString(),
+                                    Durumu= reader["Durumu"].ToString()
 
-                            };
-                            calisanlar.Add(calisan);
-                        }
+                             };
+                            
+                                calisanlar.Add(calisan);
+                        } 
                     }
                 }
                 return calisanlar;
@@ -72,76 +73,91 @@ namespace personel_Takip_28._02._2022.DataAccess
         }
         public bool Insert(calisan ccalisan)
         {
-            string sorguCumlesi = $"INSERT INTO tblCalisanlar " +
-                $"(Ad,Soyad,TcNo,PersonelNo,DogumTarihi,IseBaslamaTarihi,Departman,Unvan,Durumu)" +
+            if (Dublicate($"WHERE PersonelNo='{ccalisan.PersonelNo}'")==1)//daha önce kayıt oluşturulmuş
+            {
+                System.Windows.Forms.MessageBox.Show("Bu telefon numarası daha önce oluşturulmuş");
+                return false;
+            }
+            else
+            {
+                string sorguCumlesi = $"INSERT INTO tblCalisanlar " +
+                // $"(Ad,Soyad,TcNo,PersonelNo,DogumTarihi,IseBaslamaTarihi,Departman,Unvan,Durumu)" +
                 $"VALUES" +
                 $"(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9)";
-            try// hatalara karşı önlem olsun diye server vs çalışmaz
-            {
-                using (SqlCommand command=new SqlCommand(sorguCumlesi,SQLbaglanti.Baglanti))
+                try// hatalara karşı önlem olsun diye server vs çalışmaz
                 {
-                    command.Parameters.AddWithValue("@p1", ccalisan.Ad);
-                    command.Parameters.AddWithValue("@p2", ccalisan.Soyad);
-                    command.Parameters.AddWithValue("@p3", ccalisan.TcNo);
-                    command.Parameters.AddWithValue("@p4", ccalisan.PersonelNo);
-                    command.Parameters.AddWithValue("@p5", ccalisan.DogumTarihi);
-                    command.Parameters.AddWithValue("@p6", ccalisan.IseBaslamaTarihi);
-                    command.Parameters.AddWithValue("@p7", ccalisan.Departman);
-                    command.Parameters.AddWithValue("@p8", ccalisan.Unvan);
-                    command.Parameters.AddWithValue("@p9", ccalisan.Durumu);
-                    SQLbaglanti.baglantiAc();
-                    command.ExecuteNonQuery();
-                }
-                return true;// Kayit başarılı
+                    using (SqlCommand command = new SqlCommand(sorguCumlesi, SQLbaglanti.Baglanti))
+                    {
+                        command.Parameters.AddWithValue("@p1", ccalisan.Ad);
+                        command.Parameters.AddWithValue("@p2", ccalisan.Soyad);
+                        command.Parameters.AddWithValue("@p3", ccalisan.TcNo);
+                        command.Parameters.AddWithValue("@p4", ccalisan.PersonelNo);
+                        command.Parameters.AddWithValue("@p5", ccalisan.DogumTarihi);
+                        command.Parameters.AddWithValue("@p6", ccalisan.IseBaslamaTarihi);
+                        command.Parameters.AddWithValue("@p7", ccalisan.Departman);
+                        command.Parameters.AddWithValue("@p8", ccalisan.Unvan);
+                        command.Parameters.AddWithValue("@p9", ccalisan.Durumu);
+                        SQLbaglanti.baglantiAc();
+                        command.ExecuteNonQuery();
+                    }
+                    return true;// Kayit başarılı
 
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-                return false;// akyıt başarısız
-              //  throw;
-            }
-            finally
-            {
-                SQLbaglanti.baglantiKapat();
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                    return false;// akyıt başarısız
+                                 //  throw;
+                }
+                finally
+                {
+                    SQLbaglanti.baglantiKapat();
+                }
             }
         }
         public bool Update(calisan ccalisan)
         {
-            string sorgucumlesi = $"UPDATE tblCalisanlar SET" +
+           
+            
+            
+                string sorgucumlesi = $"UPDATE tblCalisanlar SET " +
                 $"Ad=@p1,Soyad=@p2,TcNo=@p3," +
                 $"PersonelNo=@p4,DogumTarihi=@p5," +
                 $"IseBaslamaTarihi=@p6,Departman=@p7," +
                 $"Unvan=@p8,Durumu=@p9 WHERE ID=@P10";
-            try
-            {
-                using (SqlCommand command=new SqlCommand(sorgucumlesi,SQLbaglanti.Baglanti))
+                try
                 {
-                    command.Parameters.AddWithValue("@p1", ccalisan.Ad);
-                    command.Parameters.AddWithValue("@p2", ccalisan.Soyad);
-                    command.Parameters.AddWithValue("@p3", ccalisan.TcNo);
-                    command.Parameters.AddWithValue("@p4", ccalisan.PersonelNo);
-                    command.Parameters.AddWithValue("@p5", ccalisan.DogumTarihi);
-                    command.Parameters.AddWithValue("@p6", ccalisan.IseBaslamaTarihi);
-                    command.Parameters.AddWithValue("@p7", ccalisan.Departman);
-                    command.Parameters.AddWithValue("@p8", ccalisan.Unvan);
-                    command.Parameters.AddWithValue("@p9", ccalisan.Durumu);
-                    command.Parameters.AddWithValue("@p10",ccalisan.ID);
-                    SQLbaglanti.baglantiAc();
-                    command.ExecuteNonQuery();
+                    using (SqlCommand command = new SqlCommand(sorgucumlesi, SQLbaglanti.Baglanti))
+                    {
+                        command.Parameters.AddWithValue("@p1", ccalisan.Ad);
+                        command.Parameters.AddWithValue("@p2", ccalisan.Soyad);
+                        command.Parameters.AddWithValue("@p3", ccalisan.TcNo);
+                        command.Parameters.AddWithValue("@p4", ccalisan.PersonelNo);
+                        command.Parameters.AddWithValue("@p5", ccalisan.DogumTarihi);
+                        command.Parameters.AddWithValue("@p6", ccalisan.IseBaslamaTarihi);
+                        command.Parameters.AddWithValue("@p7", ccalisan.Departman);
+                        command.Parameters.AddWithValue("@p8", ccalisan.Unvan);
+                        command.Parameters.AddWithValue("@p9", ccalisan.Durumu);
+                        command.Parameters.AddWithValue("@p10", ccalisan.ID);
+                        SQLbaglanti.baglantiAc();
+                        command.ExecuteNonQuery();
+
+                    }
+                    return true;
                 }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-                return false;
-              //  throw;
-            }
-            finally
-            {
-                SQLbaglanti.baglantiKapat();
-            }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                    return false;
+                    //  throw;
+                }
+                finally
+                {
+                    SQLbaglanti.baglantiKapat();
+                }
+           
+
+            
         }
         public bool Delete(int id)
         {
@@ -191,8 +207,101 @@ namespace personel_Takip_28._02._2022.DataAccess
                 SQLbaglanti.baglantiKapat();
             }
         }
+        public calisan Get(string kosulCumlesi="")
+        {
+            calisan calisan = null;
+            try
+            {
+                int adet = 0;
+                string sorguCumlesi = $"SELECT COUNT(*) FROM tblCalisanlar {kosulCumlesi}";
+                using (SqlCommand command = new SqlCommand(sorguCumlesi, SQLbaglanti.Baglanti))
+                {
+                    SQLbaglanti.baglantiAc();
+                    adet =Convert.ToInt32( command.ExecuteScalar());
+                    if (adet>1)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Aradıgınız kritere uygun çok sayıda karakter var\n" +
+                            "Lütfen kriteri daraltıp tekrar dene");
+                        return null;
+                    }
+                    else if (adet==1)
+                    {
+                        using (SqlCommand command1=new SqlCommand($"SELECT * FROM tblCalisanlar {kosulCumlesi}",SQLbaglanti.Baglanti))
+                        {
+                            using (SqlDataReader reader=command1.ExecuteReader())
+                            {
+
+                                while (reader.Read())
+                                {
+                                    calisan = new calisan
+                                    {
+                                        Ad = reader["Ad"].ToString(),
+                                        Soyad = reader["Soyad"].ToString(),
+                                        TcNo = reader["TcNo"].ToString(),
+                                        PersonelNo = reader["PersonelNo"].ToString(),
+                                        DogumTarihi = Convert.ToDateTime(reader["DogumTarihi"]),
+                                        IseBaslamaTarihi = Convert.ToDateTime(reader["IseBaslamaTarihi"]),
+                                        Departman = reader["Departman"].ToString(),
+                                        Unvan = reader["Unvan"].ToString(),
+                                        Durumu = reader["Durumu"].ToString()
+
+                                    };
+
+                                }
+                            }
+                            
 
 
+                        }
+                        return calisan;
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("Aradıgınız kritere uygun bir kayıt bulunamamıştır.");
+                        return null;
+                    }
+
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                return null;
+               // throw;
+            }
+            finally
+            {
+                SQLbaglanti.baglantiKapat();
+            }
+            
+            
+        }
+        public short Dublicate(string kosulCumlesi)
+        {
+            short adet = 0;
+            try
+            {
+                using (SqlCommand command=new SqlCommand($"SELECT COUNT(*) FROM tblCalisanlar {kosulCumlesi}",SQLbaglanti.Baglanti))
+                {
+                    SQLbaglanti.baglantiAc();
+                    adet = Convert.ToInt16(command.ExecuteScalar());//shorta çevirmke için
+                }
+                return adet;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                return adet;
+
+               // throw;
+            }
+            finally
+            {
+                SQLbaglanti.baglantiKapat();
+            }
+            
+        }
 
     }
 }
