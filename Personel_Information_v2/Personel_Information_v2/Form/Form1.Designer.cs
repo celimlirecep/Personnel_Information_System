@@ -29,8 +29,8 @@ namespace Personel_Information_v2
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbxBenzer = new System.Windows.Forms.CheckBox();
             this.btnBul = new System.Windows.Forms.Button();
             this.btnGetir = new System.Windows.Forms.Button();
@@ -110,6 +110,7 @@ namespace Personel_Information_v2
             this.btnSil.TabIndex = 10;
             this.btnSil.Text = "SİL";
             this.btnSil.UseVisualStyleBackColor = false;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // btnHepsiniSil
             // 
@@ -146,6 +147,7 @@ namespace Personel_Information_v2
             this.btnGuncelle.TabIndex = 13;
             this.btnGuncelle.Text = "GÜNCELLE";
             this.btnGuncelle.UseVisualStyleBackColor = false;
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
             // btnKaydet
             // 
@@ -158,6 +160,7 @@ namespace Personel_Information_v2
             this.btnKaydet.TabIndex = 14;
             this.btnKaydet.Text = "KAYDET";
             this.btnKaydet.UseVisualStyleBackColor = false;
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
             // label1
             // 
@@ -181,28 +184,29 @@ namespace Personel_Information_v2
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCalisanlar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCalisanlar.BackgroundColor = System.Drawing.Color.Moccasin;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Wheat;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSalmon;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCalisanlar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Wheat;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSalmon;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCalisanlar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCalisanlar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCalisanlar.Location = new System.Drawing.Point(404, 53);
+            this.dgvCalisanlar.Location = new System.Drawing.Point(365, 53);
             this.dgvCalisanlar.Name = "dgvCalisanlar";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Wheat;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSalmon;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCalisanlar.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Wheat;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightSalmon;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCalisanlar.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCalisanlar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCalisanlar.Size = new System.Drawing.Size(802, 364);
+            this.dgvCalisanlar.Size = new System.Drawing.Size(841, 364);
             this.dgvCalisanlar.TabIndex = 6;
+            this.dgvCalisanlar.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCalisanlar_CellEnter);
             // 
             // pnlAraclar
             // 
@@ -215,18 +219,9 @@ namespace Personel_Information_v2
             this.pnlAraclar.Controls.Add(this.txtTcNo);
             this.pnlAraclar.Controls.Add(this.txtSoyad);
             this.pnlAraclar.Controls.Add(this.txtaAd);
-            this.pnlAraclar.Controls.Add(this.label2);
-            this.pnlAraclar.Controls.Add(this.label10);
-            this.pnlAraclar.Controls.Add(this.label3);
-            this.pnlAraclar.Controls.Add(this.label9);
-            this.pnlAraclar.Controls.Add(this.label4);
-            this.pnlAraclar.Controls.Add(this.label8);
-            this.pnlAraclar.Controls.Add(this.label5);
-            this.pnlAraclar.Controls.Add(this.label7);
-            this.pnlAraclar.Controls.Add(this.label6);
-            this.pnlAraclar.Location = new System.Drawing.Point(12, 53);
+            this.pnlAraclar.Location = new System.Drawing.Point(179, 54);
             this.pnlAraclar.Name = "pnlAraclar";
-            this.pnlAraclar.Size = new System.Drawing.Size(348, 231);
+            this.pnlAraclar.Size = new System.Drawing.Size(180, 222);
             this.pnlAraclar.TabIndex = 5;
             // 
             // cmbDurumu
@@ -235,10 +230,10 @@ namespace Personel_Information_v2
             this.cmbDurumu.Items.AddRange(new object[] {
             "Aktif",
             "Pasif"});
-            this.cmbDurumu.Location = new System.Drawing.Point(173, 198);
+            this.cmbDurumu.Location = new System.Drawing.Point(3, 198);
             this.cmbDurumu.Name = "cmbDurumu";
             this.cmbDurumu.Size = new System.Drawing.Size(172, 21);
-            this.cmbDurumu.TabIndex = 5;
+            this.cmbDurumu.TabIndex = 9;
             this.cmbDurumu.Tag = "Durumu";
             // 
             // cmbUnvan
@@ -249,10 +244,10 @@ namespace Personel_Information_v2
             "Ekip Lideri",
             "Yönetici Yardımcısı",
             "Yönetici"});
-            this.cmbUnvan.Location = new System.Drawing.Point(173, 172);
+            this.cmbUnvan.Location = new System.Drawing.Point(3, 172);
             this.cmbUnvan.Name = "cmbUnvan";
             this.cmbUnvan.Size = new System.Drawing.Size(172, 21);
-            this.cmbUnvan.TabIndex = 5;
+            this.cmbUnvan.TabIndex = 8;
             this.cmbUnvan.Tag = "Unvan";
             // 
             // cmbDepartman
@@ -264,40 +259,40 @@ namespace Personel_Information_v2
             "Satış",
             "Üretim",
             "Teknik"});
-            this.cmbDepartman.Location = new System.Drawing.Point(173, 147);
+            this.cmbDepartman.Location = new System.Drawing.Point(3, 147);
             this.cmbDepartman.Name = "cmbDepartman";
             this.cmbDepartman.Size = new System.Drawing.Size(172, 21);
-            this.cmbDepartman.TabIndex = 5;
+            this.cmbDepartman.TabIndex = 7;
             this.cmbDepartman.Tag = "Departman";
             // 
             // dtpİseBaslamaTarihi
             // 
-            this.dtpİseBaslamaTarihi.Location = new System.Drawing.Point(173, 123);
+            this.dtpİseBaslamaTarihi.Location = new System.Drawing.Point(3, 123);
             this.dtpİseBaslamaTarihi.Name = "dtpİseBaslamaTarihi";
             this.dtpİseBaslamaTarihi.Size = new System.Drawing.Size(172, 20);
-            this.dtpİseBaslamaTarihi.TabIndex = 4;
+            this.dtpİseBaslamaTarihi.TabIndex = 6;
             this.dtpİseBaslamaTarihi.Tag = "IseBaslamaTarihi";
             // 
             // dtpDogumTarihi
             // 
-            this.dtpDogumTarihi.Location = new System.Drawing.Point(173, 99);
+            this.dtpDogumTarihi.Location = new System.Drawing.Point(3, 99);
             this.dtpDogumTarihi.Name = "dtpDogumTarihi";
             this.dtpDogumTarihi.Size = new System.Drawing.Size(172, 20);
-            this.dtpDogumTarihi.TabIndex = 4;
+            this.dtpDogumTarihi.TabIndex = 5;
             this.dtpDogumTarihi.Tag = "DogumTarihi";
             // 
             // txtPersonelNo
             // 
-            this.txtPersonelNo.Location = new System.Drawing.Point(173, 75);
+            this.txtPersonelNo.Location = new System.Drawing.Point(3, 75);
             this.txtPersonelNo.MaxLength = 5;
             this.txtPersonelNo.Name = "txtPersonelNo";
             this.txtPersonelNo.Size = new System.Drawing.Size(172, 20);
-            this.txtPersonelNo.TabIndex = 3;
+            this.txtPersonelNo.TabIndex = 4;
             this.txtPersonelNo.Tag = "PersonelNo";
             // 
             // txtTcNo
             // 
-            this.txtTcNo.Location = new System.Drawing.Point(173, 51);
+            this.txtTcNo.Location = new System.Drawing.Point(3, 51);
             this.txtTcNo.MaxLength = 11;
             this.txtTcNo.Name = "txtTcNo";
             this.txtTcNo.Size = new System.Drawing.Size(172, 20);
@@ -306,18 +301,18 @@ namespace Personel_Information_v2
             // 
             // txtSoyad
             // 
-            this.txtSoyad.Location = new System.Drawing.Point(173, 27);
+            this.txtSoyad.Location = new System.Drawing.Point(3, 27);
             this.txtSoyad.Name = "txtSoyad";
             this.txtSoyad.Size = new System.Drawing.Size(172, 20);
-            this.txtSoyad.TabIndex = 3;
+            this.txtSoyad.TabIndex = 2;
             this.txtSoyad.Tag = "Soyad";
             // 
             // txtaAd
             // 
-            this.txtaAd.Location = new System.Drawing.Point(173, 3);
+            this.txtaAd.Location = new System.Drawing.Point(3, 3);
             this.txtaAd.Name = "txtaAd";
             this.txtaAd.Size = new System.Drawing.Size(172, 20);
-            this.txtaAd.TabIndex = 3;
+            this.txtaAd.TabIndex = 1;
             this.txtaAd.Tag = "Ad";
             // 
             // label2
@@ -325,7 +320,7 @@ namespace Personel_Information_v2
             this.label2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Location = new System.Drawing.Point(9, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(164, 20);
             this.label2.TabIndex = 2;
@@ -336,7 +331,7 @@ namespace Personel_Information_v2
             this.label10.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label10.Location = new System.Drawing.Point(3, 200);
+            this.label10.Location = new System.Drawing.Point(9, 254);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(164, 20);
             this.label10.TabIndex = 2;
@@ -347,7 +342,7 @@ namespace Personel_Information_v2
             this.label3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(3, 25);
+            this.label3.Location = new System.Drawing.Point(9, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(164, 20);
             this.label3.TabIndex = 2;
@@ -358,7 +353,7 @@ namespace Personel_Information_v2
             this.label9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label9.Location = new System.Drawing.Point(3, 175);
+            this.label9.Location = new System.Drawing.Point(9, 229);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(164, 20);
             this.label9.TabIndex = 2;
@@ -369,7 +364,7 @@ namespace Personel_Information_v2
             this.label4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(3, 50);
+            this.label4.Location = new System.Drawing.Point(9, 104);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(164, 20);
             this.label4.TabIndex = 2;
@@ -380,7 +375,7 @@ namespace Personel_Information_v2
             this.label8.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(3, 150);
+            this.label8.Location = new System.Drawing.Point(9, 204);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(164, 20);
             this.label8.TabIndex = 2;
@@ -391,7 +386,7 @@ namespace Personel_Information_v2
             this.label5.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(3, 75);
+            this.label5.Location = new System.Drawing.Point(9, 129);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(164, 20);
             this.label5.TabIndex = 2;
@@ -402,7 +397,7 @@ namespace Personel_Information_v2
             this.label7.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label7.Location = new System.Drawing.Point(3, 125);
+            this.label7.Location = new System.Drawing.Point(9, 179);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(164, 20);
             this.label7.TabIndex = 2;
@@ -413,7 +408,7 @@ namespace Personel_Information_v2
             this.label6.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(3, 100);
+            this.label6.Location = new System.Drawing.Point(9, 154);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(164, 20);
             this.label6.TabIndex = 2;
@@ -433,8 +428,17 @@ namespace Personel_Information_v2
             this.Controls.Add(this.btnGuncelle);
             this.Controls.Add(this.btnKaydet);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.dgvCalisanlar);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.pnlAraclar);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label5);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

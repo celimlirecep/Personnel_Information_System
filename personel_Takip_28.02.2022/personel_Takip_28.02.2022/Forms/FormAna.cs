@@ -82,34 +82,30 @@ namespace personel_Takip_28._02._2022
 
         private void dgvCalisanlar_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-                Transfer();
+               Transfer();
         }
         void Transfer()
         {
             calisan= new calisan();
-            try
+           try
             {
                 
-                secilenID = Convert.ToInt32(dgvCalisanlar.SelectedRows[0].Cells[0].Value.ToString());
+                secilenID = Convert.ToInt32(dgvCalisanlar.SelectedRows[0].Cells[0].Value);
                 txtaAd.Text = dgvCalisanlar.SelectedRows[0].Cells[1].Value.ToString().ToUpper();
                 txtSoyad.Text = dgvCalisanlar.SelectedRows[0].Cells[2].Value.ToString();
-               
                 txtTcNo.Text = dgvCalisanlar.SelectedRows[0].Cells[3].Value.ToString();
                 dtpİseBaslamaTarihi.Format = DateTimePickerFormat.Long;
                 orjinalPersonelNO = txtPersonelNo.Text = dgvCalisanlar.SelectedRows[0].Cells[4].Value.ToString();
-              
-
                 dtpDogumTarihi.Value = Convert.ToDateTime(dgvCalisanlar.SelectedRows[0].Cells[5].Value.ToString());
                 dtpİseBaslamaTarihi.Format = DateTimePickerFormat.Long;
-
                 dtpİseBaslamaTarihi.Value = Convert.ToDateTime(dgvCalisanlar.SelectedRows[0].Cells[6].Value.ToString());
                 cmbDepartman.Text = dgvCalisanlar.SelectedRows[0].Cells[7].Value.ToString();
                 cmbUnvan.Text = dgvCalisanlar.SelectedRows[0].Cells[8].Value.ToString();
                 cmbDurumu.Text = dgvCalisanlar.SelectedRows[0].Cells[9].Value.ToString();
-            }
-            catch (Exception)
+           }
+            catch (Exception ex)
             {
-             
+              ///  MessageBox.Show(ex.Message);
                 // throw;
             }
           
@@ -145,8 +141,8 @@ namespace personel_Takip_28._02._2022
                 calisan.PersonelNo = txtPersonelNo.Text;
                 calisan.DogumTarihi = dtpDogumTarihi.Value;
                 calisan.IseBaslamaTarihi = dtpİseBaslamaTarihi.Value;
-                calisan.Departman = cmbDepartman.SelectedItem.ToString();
-                calisan.Unvan = cmbUnvan.SelectedItem.ToString();
+             //   calisan.Departman = Convert.ToInt32( cmbDepartman.SelectedValue);
+             //   calisan.Unvan = Convert.ToInt32(cmbUnvan.SelectedValue);
                 calisan.Durumu = cmbDurumu.SelectedItem.ToString();
                 
                 
@@ -285,8 +281,8 @@ namespace personel_Takip_28._02._2022
                 dtpDogumTarihi.Value = calisan.DogumTarihi;
                 dtpİseBaslamaTarihi.Format = DateTimePickerFormat.Long;
                 dtpİseBaslamaTarihi.Value = calisan.IseBaslamaTarihi;
-                cmbDepartman.Text = calisan.Departman;
-                cmbUnvan.Text = calisan.Unvan;
+              //  cmbDepartman.Text = calisan.Departman.ToString();
+               // cmbUnvan.Text = calisan.Unvan.ToString();
                 cmbDurumu.Text = calisan.Durumu;
 
             }
@@ -315,8 +311,8 @@ namespace personel_Takip_28._02._2022
                     PersonelNo = txtPersonelNo.Text,
                     DogumTarihi = dtpDogumTarihi.Value,
                     IseBaslamaTarihi = dtpİseBaslamaTarihi.Value,
-                    Departman = cmbDepartman.SelectedItem.ToString(),
-                    Unvan = cmbUnvan.SelectedItem.ToString(),
+                  //  Departman =cmbDepartman.SelectedValue,
+                   // Unvan =Convert.ToInt32( cmbUnvan.SelectedValue),
                     Durumu = cmbDurumu.SelectedItem.ToString()
                 };
 

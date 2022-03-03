@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace personel_Takip_28._02._2022.Entities
 {
-   public class calisan
+   public class calisan:IBaseEntıty
     {// Bu class bizim entities katmanındadır
-        //Entititlerimizden tblCalisanlara ait bir entitie için hazırlandı
+     //Entititlerimizden tblCalisanlara ait bir entitie için hazırlandı
+
         public int ID { get; set; }
         public string Ad { get; set; }
         public string Soyad { get; set; }

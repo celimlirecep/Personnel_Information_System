@@ -29,7 +29,7 @@ namespace personel_Takip_28._02._2022.DataAccess
             {
                 //Buraya yazacağımız işlemleri dene sorun yoksa çalıştır
                                                   //koşul cümles ile WHERE .... ile sorgu yazıp istediğimiz degerleri döndürebilmek
-                using (SqlCommand command = new SqlCommand($"SELECT * FROM tblCalisanlar {kosulCumlesi}", SQLbaglanti.Baglanti))
+                using (SqlCommand command = new SqlCommand($"SELECT * FROM vCalisanlar {kosulCumlesi}", SQLbaglanti.Baglanti))
                 {
                     //using satırında yaratılşan nesne sadece bu scopta yaşayacak bu scop dışında yok olacak
                     //garbage collector insiyatifine bırakmamış olduk. 
@@ -62,7 +62,7 @@ namespace personel_Takip_28._02._2022.DataAccess
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+               // System.Windows.Forms.MessageBox.Show(ex.Message);
                 return null;
               //  throw; // HATA VARSA PROGRAMDA DURUCAK
             }
@@ -81,7 +81,7 @@ namespace personel_Takip_28._02._2022.DataAccess
             else
             {
                 string sorguCumlesi = $"INSERT INTO tblCalisanlar " +
-                // $"(Ad,Soyad,TcNo,PersonelNo,DogumTarihi,IseBaslamaTarihi,Departman,Unvan,Durumu)" +
+                // $"(Ad,Soyad,TcNo,PersonelNo,DogumTarihi,IseBaslamaTarihi,DepartmanID,UnvanID,Durumu)" +
                 $"VALUES" +
                 $"(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9)";
                 try// hatalara karşı önlem olsun diye server vs çalışmaz
@@ -123,8 +123,8 @@ namespace personel_Takip_28._02._2022.DataAccess
                 string sorgucumlesi = $"UPDATE tblCalisanlar SET " +
                 $"Ad=@p1,Soyad=@p2,TcNo=@p3," +
                 $"PersonelNo=@p4,DogumTarihi=@p5," +
-                $"IseBaslamaTarihi=@p6,Departman=@p7," +
-                $"Unvan=@p8,Durumu=@p9 WHERE ID=@P10";
+                $"IseBaslamaTarihi=@p6,DepartmanID=@p7," +
+                $"UnvanID=@p8,Durumu=@p9 WHERE ID=@P10";
                 try
                 {
                     using (SqlCommand command = new SqlCommand(sorgucumlesi, SQLbaglanti.Baglanti))
@@ -159,6 +159,7 @@ namespace personel_Takip_28._02._2022.DataAccess
 
             
         }
+        
         public bool Delete(int id)
         {
             string sorguCumlesi = "DELETE FROM tblCalisanlar WHERE ID =@p1";
@@ -226,6 +227,7 @@ namespace personel_Takip_28._02._2022.DataAccess
                     }
                     else if (adet==1)
                     {
+
                         using (SqlCommand command1=new SqlCommand($"SELECT * FROM tblCalisanlar {kosulCumlesi}",SQLbaglanti.Baglanti))
                         {
                             using (SqlDataReader reader=command1.ExecuteReader())
@@ -241,10 +243,9 @@ namespace personel_Takip_28._02._2022.DataAccess
                                         PersonelNo = reader["PersonelNo"].ToString(),
                                         DogumTarihi = Convert.ToDateTime(reader["DogumTarihi"]),
                                         IseBaslamaTarihi = Convert.ToDateTime(reader["IseBaslamaTarihi"]),
-                                        Departman = reader["Departman"].ToString(),
+                                        Departman =reader["DepartmanID"].ToString(),
                                         Unvan = reader["Unvan"].ToString(),
                                         Durumu = reader["Durumu"].ToString()
-
                                     };
 
                                 }
